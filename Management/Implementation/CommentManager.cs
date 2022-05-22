@@ -37,8 +37,9 @@ namespace Management.Implementation
             return await  _commentRepository.CreateAsync(comment);
         }
 
-        public async Task<Comment> UpdateAsync(Comment comment)
+        public async Task<Comment> UpdateAsync(UpdateComment updateComment)
         {
+            var comment = _mapper.Map<Comment>(updateComment);
             return await _commentRepository.UpdateAsync(comment);
         }
 

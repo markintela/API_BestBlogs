@@ -2,7 +2,7 @@ using System;
 
 namespace Model.Domain
 {
-    public record Post
+    public class Post
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

@@ -78,8 +78,12 @@ namespace Api.Controllers
         [HttpGet("{id:guid}/comments")]
         public async Task<IActionResult> GetComments([FromRoute] Guid id)
         {
-            await _postManager.DeleteAsync(id);
-            return NoContent();
+            var comment = await _postManager.GetCommentByPostIdAsync(id);
+            if (comment == null)
+            {
+                throw new KeyNotFoundException("No comments!");
+            }
+            return Ok(comment);
         }
     }
 }

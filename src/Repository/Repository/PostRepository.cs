@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Manager.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,11 @@ namespace Repository.Repository
             var postToDelete = await _dataContext.Posts.FindAsync(id);
             _dataContext.Posts.Remove(postToDelete);
             await _dataContext.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<Comment>> GetCommentByPostIdAsync(Guid postId)
+        {
+            var comments = await _dataContext.Comments.Include(c => c.Post).Where(c => c.Post.Id == postId).ToListAsync();
+            return comments;
         }
     }
 }

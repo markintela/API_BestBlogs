@@ -45,14 +45,12 @@ namespace Repository.Repository
 
         public async Task<Comment> UpdateAsync(Comment comment)
         {
-            var commentUpdated = await _dataContext.Comments.FindAsync(comment.Id);
-
+            var commentUpdated = await _dataContext.Comments.Include(p => p.Post).SingleOrDefaultAsync(c => c.Id == comment.Id);
             if (commentUpdated == null)
             {
                 return null;
             }
             _dataContext.Entry(commentUpdated).CurrentValues.SetValues(comment);
-
             _dataContext.Comments.Update(commentUpdated);
             await _dataContext.SaveChangesAsync();
             return commentUpdated;
@@ -65,9 +63,6 @@ namespace Repository.Repository
             await _dataContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Comment>> GetByPostIdAsync(Guid postId)
-        {
-            throw new NotImplementedException();
-        }
+     
     }
 }

@@ -14,7 +14,8 @@ namespace Manager.Interfaces.Repository
 
 
         Task<Post> GetAsync(Guid id);
-        
+
+        Task<IEnumerable<Comment>> GetCommentByPostIdAsync(Guid postId);
 
         Task<Post> CreateAsync(Post post);
 

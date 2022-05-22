@@ -14,8 +14,10 @@ namespace Management.Mapping
     {
         public CommentMappingProfile() {
             CreateMap<Post, PostReference>().ReverseMap();
+            CreateMap<Comment, CommentView>().ReverseMap();
+            CreateMap<Comment, CommentView>();
             CreateMap<NewCommment, Comment>();
-            CreateMap<NewCommment, Comment>().ReverseMap();
+            CreateMap<UpdateComment, Comment>();
         }       
     }
 }

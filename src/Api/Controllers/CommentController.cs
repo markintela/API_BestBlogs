@@ -44,6 +44,8 @@ namespace Api.Controllers
             return Ok(comment);
         }
 
+  
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] NewCommment newComment)
         {
@@ -57,7 +59,7 @@ namespace Api.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<IActionResult> Put([FromRoute] Guid id, [FromBody] Comment comment)
+        public async Task<IActionResult> Put([FromBody] UpdateComment comment)
         {
             var commentToUpdate = await _commentManager.UpdateAsync(comment);
 

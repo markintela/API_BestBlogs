@@ -18,7 +18,7 @@ namespace Management.Manager
         Task<Comment> CreateAsync(NewCommment comment);
 
 
-        Task<Comment> UpdateAsync(Comment comment);
+        Task<Comment> UpdateAsync(UpdateComment comment);
 
 
         Task DeleteAsync(Guid id);

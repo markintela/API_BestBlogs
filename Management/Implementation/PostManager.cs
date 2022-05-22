@@ -2,6 +2,7 @@
 using Management.Manager;
 using Manager.Interfaces.Repository;
 using Model.Domain;
+using ModelViewShared.ModelView.Comment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,11 @@ namespace Management.Implementation
         public async Task<Post> UpdateAsync(Post post)
         {
             return await _postRepository.UpdateAsync(post);
+        }
+        public async Task<IEnumerable<Comment>> GetCommentByPostIdAsync(Guid postId)
+        {
+            var post =   await _postRepository.GetCommentByPostIdAsync(postId);
+            return post;
         }
 
         public async Task DeleteAsync(Guid id)

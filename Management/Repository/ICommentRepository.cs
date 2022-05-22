@@ -23,7 +23,7 @@ namespace Management.Interfaces.Repository
         Task DeleteAsync(Guid id);
 
 
-        Task<IEnumerable<Comment>> GetByPostIdAsync(Guid postId);
+     
       
     }
 }
