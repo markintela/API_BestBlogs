@@ -30,6 +30,7 @@ namespace Repository.Repository
 
         public async Task<Post> CreateAsync(Post post)
         {
+            post.CreationDate = DateTime.Now;
             await _dataContext.Posts.AddAsync(post);
             await _dataContext.SaveChangesAsync();
             return post;

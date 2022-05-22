@@ -1,5 +1,6 @@
 ﻿using Model.Domain;
 using ModelViewShared.ModelView.Comment;
+using ModelViewShared.ModelView.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,9 @@ namespace Management.Manager
 
         Task<Post> GetAsync(Guid id);
 
-        Task<IEnumerable<Comment>> GetCommentByPostIdAsync(Guid postId);
+        Task<IEnumerable<CommentView>> GetCommentByPostIdAsync(Guid postId);
        
-        Task<Post> CreateAsync(Post post);
+        Task<Post> CreateAsync(NewPost post);
 
 
         Task<Post> UpdateAsync(Post post);

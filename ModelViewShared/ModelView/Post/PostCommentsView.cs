@@ -5,8 +5,8 @@ using System.Text;
 
 namespace ModelViewShared.ModelView.Post
 {
-    public class PostCommentsView : PostReference
+    public class PostCommentsView 
     {
-        public ICollection<CommentView> Comments { get; set; }
+        public IEnumerable<CommentView> Comments { get; set; }
     }
 }

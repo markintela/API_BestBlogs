@@ -12,12 +12,11 @@ namespace Management.Mapping
 {
     public class CommentMappingProfile : Profile
     {
-        public CommentMappingProfile() {
-            CreateMap<Post, PostReference>().ReverseMap();
-            CreateMap<Comment, CommentView>().ReverseMap();
+        public CommentMappingProfile() {     
             CreateMap<Comment, CommentView>();
             CreateMap<NewCommment, Comment>();
             CreateMap<UpdateComment, Comment>();
+          
         }       
     }
 }

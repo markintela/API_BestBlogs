@@ -5,6 +5,7 @@ using Management.Manager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Model.Domain;
+using ModelViewShared.ModelView.Post;
 
 namespace Api.Controllers
 {
@@ -45,15 +46,16 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Post post)
+        public async Task<IActionResult> Post([FromBody] NewPost post)
         {
-            var coommentToCreate = await _postManager.CreateAsync(post);
-            if (coommentToCreate == null)
+           
+            var postToCreate = await _postManager.CreateAsync(post);
+            if (postToCreate == null)
             {
                 throw new ApplicationException("Post not created.");
 
             }
-            return CreatedAtAction(nameof(Get), new { id = coommentToCreate.Id }, coommentToCreate);
+            return CreatedAtAction(nameof(Get), new { id = postToCreate.Id }, postToCreate);
         }
 
         [HttpPut("{id:guid}")]

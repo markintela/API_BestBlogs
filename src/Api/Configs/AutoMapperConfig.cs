@@ -8,7 +8,8 @@ namespace Api.Configs
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
             services.AddAutoMapper(
-                typeof(CommentMappingProfile)
+                typeof(CommentMappingProfile),
+                 typeof(PostMappingProfile)
             );           
         }
     }

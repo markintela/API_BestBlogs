@@ -3,6 +3,7 @@ using Management.Manager;
 using Manager.Interfaces.Repository;
 using Model.Domain;
 using ModelViewShared.ModelView.Comment;
+using ModelViewShared.ModelView.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +34,9 @@ namespace Management.Implementation
             return await _postRepository.GetAsync(id);
         }
 
-        public async Task<Post> CreateAsync(Post post)
+        public async Task<Post> CreateAsync(NewPost newPost)
         {
+            var post = _mapper.Map<Post>(newPost);
             return await _postRepository.CreateAsync(post);   
         }
 
@@ -42,9 +44,9 @@ namespace Management.Implementation
         {
             return await _postRepository.UpdateAsync(post);
         }
-        public async Task<IEnumerable<Comment>> GetCommentByPostIdAsync(Guid postId)
+        public async Task<IEnumerable<CommentView>> GetCommentByPostIdAsync(Guid postId)
         {
-            var post =   await _postRepository.GetCommentByPostIdAsync(postId);
+            var post = _mapper.Map<IEnumerable<CommentView>>(await _postRepository.GetCommentByPostIdAsync(postId));
             return post;
         }
 
