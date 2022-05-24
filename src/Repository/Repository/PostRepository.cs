@@ -25,7 +25,8 @@ namespace Repository.Repository
 
         public async Task<Post> GetAsync(Guid id)
         {
-            return await _dataContext.Posts.FindAsync(id);
+            
+            return await _dataContext.Posts.Include("Comments").SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Post> CreateAsync(Post post)

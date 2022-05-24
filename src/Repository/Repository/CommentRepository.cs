@@ -63,6 +63,9 @@ namespace Repository.Repository
             await _dataContext.SaveChangesAsync();
         }
 
-     
+        public async Task<IEnumerable<Comment>> GetByPostIdAsync(Guid postId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

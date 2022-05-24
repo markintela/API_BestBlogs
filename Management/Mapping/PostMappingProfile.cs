@@ -14,7 +14,8 @@ namespace Management.Mapping
         public PostMappingProfile()
         {
             CreateMap<Post, PostReference>().ReverseMap();     
-            CreateMap<NewPost, Post>();           
+            CreateMap<NewPost, Post>();
+            CreateMap<Post, PostCommentsView>();
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Model.Domain
 {
@@ -8,5 +9,6 @@ namespace Model.Domain
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreationDate { get; set; }
+        public virtual IEnumerable<Comment> Comments { get; set; }
     }
 }

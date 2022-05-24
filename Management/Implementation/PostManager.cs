@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Management.Interfaces.Repository;
 using Management.Manager;
 using Manager.Interfaces.Repository;
 using Model.Domain;
@@ -16,11 +17,13 @@ namespace Management.Implementation
     {
 
         private readonly IPostRepository _postRepository;
+        private readonly ICommentRepository _commentRepository;
         public readonly IMapper _mapper;
 
-        public PostManager(IPostRepository postRepository, IMapper mapper)
+        public PostManager(IPostRepository postRepository, ICommentRepository commentRepository, IMapper mapper)
         {            
             _postRepository = postRepository;
+            _commentRepository =  commentRepository;
             _mapper = mapper;
         }
 
@@ -44,10 +47,12 @@ namespace Management.Implementation
         {
             return await _postRepository.UpdateAsync(post);
         }
-        public async Task<IEnumerable<CommentView>> GetCommentByPostIdAsync(Guid postId)
+        public async Task<PostCommentsView> GetCommentByPostIdAsync(Guid postId)
         {
-            var post = _mapper.Map<IEnumerable<CommentView>>(await _postRepository.GetCommentByPostIdAsync(postId));
-            return post;
+            var post = await _postRepository.GetAsync(postId);
+            //var comments = await _commentRepository.GetAllAsync();
+            //post.Comments = comments.Where(x => x.Post.Id == postId);
+            return _mapper.Map<PostCommentsView>(post);
         }
 
         public async Task DeleteAsync(Guid id)

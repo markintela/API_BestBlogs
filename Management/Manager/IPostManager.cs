@@ -16,7 +16,7 @@ namespace Management.Manager
 
         Task<Post> GetAsync(Guid id);
 
-        Task<IEnumerable<CommentView>> GetCommentByPostIdAsync(Guid postId);
+        Task<PostCommentsView> GetCommentByPostIdAsync(Guid postId);
        
         Task<Post> CreateAsync(NewPost post);
 
