@@ -10,7 +10,7 @@ namespace Management.Manager
 {
     public interface ICommentManager
     {
-        Task<IEnumerable<Comment>> GetAllAsync();
+        Task<IEnumerable<CommentView>> GetAllAsync();
 
         Task<Comment> GetAsync(Guid id);
 

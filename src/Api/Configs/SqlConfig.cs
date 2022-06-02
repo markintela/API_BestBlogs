@@ -10,10 +10,11 @@ namespace Api.Configs
     {
         public static void AddSqlConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            var database = configuration.GetConnectionString("DBConnection");
+            var database = configuration.GetConnectionString("sqlitedb");
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlServer(database);
+                options.UseSqlite(database);
+               
             });
 
         }

@@ -13,6 +13,7 @@ namespace Api.Configs
                 {
                     p.RegisterValidatorsFromAssemblyContaining<PostValidator>();
                     p.RegisterValidatorsFromAssemblyContaining<CommentValidator>();
+                    p.RegisterValidatorsFromAssemblyContaining<PostReferenceValidator>();
 
                 });
            

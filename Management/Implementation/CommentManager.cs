@@ -21,9 +21,10 @@ namespace Management.Implementation
             _commentRepository = commentRepository;
             _mapper = mapper;
         }
-        public async Task<IEnumerable<Comment>> GetAllAsync()
+        public async Task<IEnumerable<CommentView>> GetAllAsync()
         {
-            return await _commentRepository.GetAllAsync();
+
+            return  _mapper.Map<IEnumerable<CommentView>>(await _commentRepository.GetAllAsync());
         }
 
         public async Task<Comment> GetAsync(Guid id)

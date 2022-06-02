@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Manager.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 using Model.Domain;
+using ModelViewShared.ModelView.Post;
 using Repository.Context;
 
 namespace Repository.Repository
@@ -63,6 +64,11 @@ namespace Repository.Repository
         {
             var comments = await _dataContext.Comments.Include(c => c.Post).Where(c => c.Post.Id == postId).ToListAsync();
             return comments;
+        }
+
+        public bool ValidationExistInDatabase(Guid id)
+        {
+            return _dataContext.Posts.Any(p => p.Id == id);
         }
     }
 }

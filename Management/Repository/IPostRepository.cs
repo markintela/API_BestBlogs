@@ -1,4 +1,5 @@
 ﻿using Model.Domain;
+using ModelViewShared.ModelView.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,5 +24,7 @@ namespace Manager.Interfaces.Repository
         Task<Post> UpdateAsync(Post post);
 
         Task DeleteAsync(Guid id);
+
+        bool ValidationExistInDatabase(Guid post);
     }
 }
